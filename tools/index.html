@@ -1,0 +1,1495 @@
+<body class="blank" style="">
+    <div class="kl-module-notification">
+        <div class="modal fade" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close kl-module-close kl-module-cancel" data-dismiss="modal"
+                            aria-hidden="true">×</button>
+                        <h4 class="modal-title"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modalhata"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary kl-module-continue">Devam Et</button>
+                        <button type="button" class="btn btn-primary kl-module-confirm">Onayla</button>
+                        <button type="button" class="btn btn-primary kl-module-yes">Evet</button>
+                        <button type="button" class="btn btn-primary kl-module-no">Hayır</button>
+                        <button type="button" class="btn btn-primary kl-module-ok">Tamam</button>
+                        <button type="button" class="btn btn-default kl-module-close" data-dismiss="modal"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <link href="/Styles/Vatandas?v=tYrgrNah27zTXrH6POiB0ZIm9c4V6FfaaR2rDf-RihM1" rel="stylesheet">
+
+    <script>
+        kale.serverDefinitions = {};
+
+        kale.serverDefinitions.baseActionAddress = '/';
+        if (kale.serverDefinitions.baseActionAddress == "/")
+            kale.serverDefinitions.baseActionAddress = "";
+
+    </script>
+
+    <script type="text/javascript">
+
+        kale.serverDefinitions.ActionString_GetAutoComplete = "/Parameter/GetAutoComplete";
+
+
+
+        kale.serverDefinitions.reCaptcha = {};
+        kale.serverDefinitions.reCaptcha.adresSecimCaptchaValidation = "true";
+        kale.serverDefinitions.reCaptcha.validation = "true";
+        kale.serverDefinitions.reCaptcha.siteKey = "6LcrFjwUAAAAABui7fXG9wtscqRlt6Avzxfxkmdz";
+
+        kale.serverDefinitions.parameterActions = {};
+
+
+
+        kale.serverDefinitions.yskSecimSurecindeMi = JSON.parse("false");
+    </script>
+
+
+
+    <script type="text/javascript">
+
+
+        kale.serverDefinitions.userDefinitions = {};
+        kale.serverDefinitions.userDefinitions.username = "";
+        kale.serverDefinitions.userDefinitions.kimlikNo = "";
+
+        kale.serverDefinitions.userDefinitions.isBuyukSehir = JSON.parse(false);
+        kale.serverDefinitions.userDefinitions.organizationType = "0";
+        kale.serverDefinitions.userDefinitions.kullaniciKurumKod = 1;
+        kale.serverDefinitions.userDefinitions.authorizedCommandOperationCodeListString = "";
+        kale.serverDefinitions.userDefinitions.authorizedQueryOperationCodeListString = "";
+        var authorizedCommandOperationList = kale.serverDefinitions.userDefinitions.authorizedCommandOperationCodeListString.split(",").map(Number);
+        var authorizedQueryOperationList = kale.serverDefinitions.userDefinitions.authorizedQueryOperationCodeListString.split(",").map(Number);
+        kale.serverDefinitions.userDefinitions.authorizedOperationCodeList = $.merge(authorizedCommandOperationList, authorizedQueryOperationList);
+        kale.serverDefinitions.userDefinitions.muhtarYetkiList = null;   
+    </script>
+
+
+
+    <div style="height:60px;"></div>
+
+    <div class="body-content" id="tarihselBody" data-role="modelvalidators" kl-has-module="true"
+        kl-module-id="791a8e59-7c00-48ad-8b39-4845cff87e73">
+
+
+
+
+
+
+
+
+        <div class="vatandasInnerBody">
+
+
+            <link href="/Scripts/openlayers/css/map.css?1.2023.1229.1" rel="stylesheet" type="text/css">
+
+            <script id="numaratajTemplate" type="text/x-kale-tmpl">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table aksHarita table-bordered table-hover ui-responsive">
+                <thead>
+                    <tr class="table-header hidden-sm hidden-xs">
+                        <th colspan="9">Numarataj Bilgileri</th>
+                        <th colspan="7" class="bagimsizBolum">Bağımsız Bölüm Bilgileri</th>
+                    </tr>
+                    <tr class="table-sub-header">
+                        <th class="hidden-sm hidden-xs">Kimlik No</th>
+                        <th class="hidden-sm hidden-xs">Ada</th>
+                        <th class="hidden-sm hidden-xs">Parsel</th>
+                        <th class="hidden-sm hidden-xs">Pafta</th>
+                        <th class="hidden-sm hidden-xs">Posta Kod</th>
+                        <th class="hidden-sm hidden-xs">Numarataj Tipi</th>
+                        <th class="hidden-sm hidden-xs">Site Adı</th>
+                        <th class="hidden-sm hidden-xs">Apartman/Blok Adı</th>
+                        <th class="hidden-sm hidden-xs">Dış Kapı</th>
+                        <th class="bagimsizBolum hidden-sm hidden-xs">Kimlik No</th>
+                        <th class="bagimsizBolum hidden-sm hidden-xs">İç Kapı</th>
+                        <th class="bagimsizBolum hidden-sm hidden-xs">Kullanım Amacı</th>
+                        <th class="bagimsizBolum hidden-sm hidden-xs">Tip</th>
+                        <th class="bagimsizBolum hidden-sm hidden-xs">Durum</th>
+                        <th class="bagimsizBolum hidden-sm hidden-xs">Tapu No</th>
+                        <th class="bagimsizBolum visible-sm visible-xs">Açık Adres</th>
+                        <th class="bagimsizBolum"></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</script>
+
+            <script id="acikAdresTemplate" type="text/x-kale-tmpl">
+    <div>
+        <label id="acikAdresAciklama"></label>
+        <br />
+        <div class="x-small">
+            Kimlik No : <label id="binaNo"></label>,
+            Kimlik No : <label id="adresNo"></label>,
+            Ada : <label id="ada"></label>,
+            Pafta : <label id="pafta"></label>,
+            Parsel : <label id="parsel"></label>,
+            Posta Kodu : <label id="postaKodu"></label>,
+            Numarataj Tipi : <label id="maksBinaNumaratajTipiFormatted"></label>,
+            Site Adı : <label id="siteAdi"></label>,
+            Apartman/Blok Adı : <label id="blokAdi"></label>,
+            Dış Kapı No : <label id="disKapiNo"></label>,
+            İç Kapı No : <label id="icKapiNo"></label>,
+            Kullanım Amacı : <label id="yapiKullanimAmacFormatted"></label>,
+            Tip : <label id="maksBbTipFormatted"></label>,
+            Durum : <label id="maksBbDurumFormatted"></label>,
+            Tapu No : <label id="tapuNo"></label>
+        </div>
+    </div>
+</script>
+
+            <script id="bagimsizBolumTemplate" type="text/x-kale-tmpl">
+    <tr bagimsizBolumKimlikNo="">
+        <td class="hidden-sm hidden-xs" data-title='Numarataj Kimlik No'><label id="binaNo"></label></td>
+        <td class="hidden-sm hidden-xs" data-title='Ada'><label id="ada"></label></td>
+        <td class="hidden-sm hidden-xs" data-title='Parsel'><label id="parsel"></label></td>
+        <td class="hidden-sm hidden-xs" data-title='Pafta'><label id="pafta"></label></td>
+        <td class="hidden-sm hidden-xs" data-title='Posta Kodu'><label id="postaKodu"></label></td>
+        <td class="hidden-sm hidden-xs" data-title='Numarataj Tipi'><label id="maksBinaNumaratajTipiFormatted"></label></td>
+        <td class="hidden-sm hidden-xs" data-title='Site Adı'><label id="siteAdi"></label></td>
+        <td class="hidden-sm hidden-xs" data-title='Apartman/Blok Adı'><label id="blokAdi"></label></td>
+        <td class="hidden-sm hidden-xs" data-title='Dış Kapı No'><label id="disKapiNo"></label></td>
+        <td class="bagimsizBolum hidden-sm hidden-xs" data-title='Kimlik No'><label id="adresNo"></label></td>
+        <td class="bagimsizBolum hidden-sm hidden-xs" data-title='İç Kapı No'><label id="icKapiNo"></label></td>
+        <td class="bagimsizBolum hidden-sm hidden-xs" data-title='Kullanım Amacı'><label id="yapiKullanimAmacFormatted"></label></td>
+        <td class="bagimsizBolum hidden-sm hidden-xs" data-title='Tip'><label id="maksBbTipFormatted"></label></td>
+        <td class="bagimsizBolum hidden-sm hidden-xs" data-title='Durum'><label id="maksBbDurumFormatted"></label></td>
+        <td class="bagimsizBolum hidden-sm hidden-xs" data-title='Tapu No'><label id="tapuNo"></label></td>
+        <td class="bagimsizBolum visible-sm visible-xs" data-title='Açık Adres'>
+            <label id="acikAdresTemplate"></label>
+        </td>
+        <td data-title=''><div class="dogrulamaButonContainer"></div></td>
+    </tr>
+</script>
+
+            <script id="bagimsizBolumPopupTemplate" type="text/x-kale-tmpl">
+    <div class="row" style="text-align:left;">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-4 tcKimlikDogrulamaLabal">Kimlik No</div>
+                <div class="col-md-8">
+                    <label id="adresNo">$adresNo</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 tcKimlikDogrulamaLabal">İç Kapı No</div>
+                <div class="col-md-8">
+                    <label id="adresNo">$icKapiNo</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+            <script id="lokasyonTemplate" type="text/x-kale-tmpl">
+    <div id="lokasyonForm">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 margin-top-5">
+                <div id="adrescaptcha"></div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 margin-top-5">
+                <select id="ilListesi" name="ilKayitNo">
+                    <option></option>
+                </select>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 margin-top-5">
+                <select id="ilceListesi" name="ilceKayitNo" disabled="disabled">
+                    <option></option>
+                </select>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 margin-top-5">
+                <select id="mahalleKoyBaglisiListesi" name="mahalleKoyBaglisiListesiKayitNo" disabled="disabled">
+                    <option></option>
+                </select>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 margin-top-5">
+                <select id="yolListesi" name="yolKayitNo" disabled="disabled">
+                    <option></option>
+                </select>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 margin-top-5">
+                <select id="binaListesi" name="binaKayitNo" disabled="disabled">
+                    <option></option>
+                </select>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 margin-top-5">
+                <select id="bagimsizBolumListesi" name="bagimsizBolumKayitNo" disabled="disabled">
+                    <option></option>
+                </select>
+            </div>
+        </div>
+    </div>
+</script>
+
+            <script id="tcKimlikDogrulamaTemplate" type="text/x-kale-tmpl">
+    <div id="tcKimlikDogrulama" style="cursor: default; padding:15px;">
+        <button class="pull-right close" type="button" id="tcKimlikNoKontrolKapat">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <div id="tcKimlikDogrulamaForm">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-warning" role="alert">
+                        Adres Kayıt Sistemi içerisinde kayıtlı olup olmadığınızı veya adresinizin doğru olup olmadığını sorgulayabilirsiniz.
+                        İşleme başlamak için T.C. Kimlik Numaranızı ve adresinizi seçerek Kontrol Et düğmesine basınız.
+                    </div>
+                </div>
+            </div>
+            <div class="row margin-top-5">
+                <div class="col-md-12">
+                    $innerHtml
+                </div>
+            </div>
+            <div class="row margin-top-5">
+                <div class="col-md-4 margin-top-5 tcKimlikDogrulamaLabal">T.C. Kimlik No</div>
+                <div class="col-md-4 margin-top-5 tcKimlikDogrulamaSpan">
+                    <input type="hidden" id="bagimsizBolumKimlikNo" name="bagimsizBolumKimlikNo" value="$bagimsizBolumKimlikNo" />
+                    <input type="text" id="tcKimlikNo" class="form-control" name="tcKimlikNo" title="T.C. Kimlik No" /><br />
+                    <div id="tccaptcha" data-size="compact"></div>
+                </div>
+            </div>
+            <div class="row margin-top-5">
+                <div id="tcKimlikDogrulamaMesaj" class="col-md-12"></div>
+            </div>
+
+            <div class="row margin-top-5">
+                <div class="col-md-12" style="text-align:right;">
+                    <button type="button" id="tcKimlikNoKontrolEt" class="btn btn-primary">Kontrol Et</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+            <script src="/Areas/VatandasIslemleri/Views/AdresSorgu/JS/IndexJS.js?1.2023.1229.1"
+                type="text/javascript"></script>
+
+            <script>
+                kale.serverDefinitions.adresSorgu = {};
+                kale.serverDefinitions.adresSorgu.actions = {}
+                kale.serverDefinitions.adresSorgu.actions.tcKimlikKontrolEt = '/VatandasIslemleri/AdresSorgu/KisiAdresOturuyormuAra'
+            </script>
+
+            <div id="map" class="full-map ol-map" style="zoom: 1;">
+
+                <div class="ol-viewport"
+                    style="position: relative; overflow: hidden; width: 100%; height: 100%; touch-action: none;"><canvas
+                        class="ol-unselectable" width="819" height="649" style="width: 100%; height: 100%;"></canvas>
+                    <div class="ol-overlaycontainer"></div>
+                    <div class="ol-overlaycontainer-stopevent">
+                        <div class="ol-zoom ol-unselectable ol-control"><button class="ol-zoom-in" type="button"
+                                title="Zoom in">+</button><button class="ol-zoom-out" type="button"
+                                title="Zoom out">−</button></div>
+                        <div class="ol-rotate ol-unselectable ol-control ol-hidden"><button class="ol-rotate-reset"
+                                type="button" title="Reset rotation"><span class="ol-compass"
+                                    style="transform: rotate(0rad);">⇧</span></button></div>
+                        <div class="ol-attribution ol-unselectable ol-control ol-collapsed ol-logo-only">
+                            <ul>
+                                <li style=""><a href="https://openlayers.org/"><img
+                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAA3NCSVQICAjb4U/gAAAACXBIWXMAAAHGAAABxgEXwfpGAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAhNQTFRF////AP//AICAgP//AFVVQECA////K1VVSbbbYL/fJ05idsTYJFtbbcjbJllmZszWWMTOIFhoHlNiZszTa9DdUcHNHlNlV8XRIVdiasrUHlZjIVZjaMnVH1RlIFRkH1RkH1ZlasvYasvXVsPQH1VkacnVa8vWIVZjIFRjVMPQa8rXIVVkXsXRsNveIFVkIFZlIVVj3eDeh6GmbMvXH1ZkIFRka8rWbMvXIFVkIFVjIFVkbMvWH1VjbMvWIFVlbcvWIFVla8vVIFVkbMvWbMvVH1VkbMvWIFVlbcvWIFVkbcvVbMvWjNPbIFVkU8LPwMzNIFVkbczWIFVkbsvWbMvXIFVkRnB8bcvW2+TkW8XRIFVkIlZlJVloJlpoKlxrLl9tMmJwOWd0Omh1RXF8TneCT3iDUHiDU8LPVMLPVcLPVcPQVsPPVsPQV8PQWMTQWsTQW8TQXMXSXsXRX4SNX8bSYMfTYcfTYsfTY8jUZcfSZsnUaIqTacrVasrVa8jTa8rWbI2VbMvWbcvWdJObdcvUdszUd8vVeJaee87Yfc3WgJyjhqGnitDYjaarldPZnrK2oNbborW5o9bbo9fbpLa6q9ndrL3ArtndscDDutzfu8fJwN7gwt7gxc/QyuHhy+HizeHi0NfX0+Pj19zb1+Tj2uXk29/e3uLg3+Lh3+bl4uXj4ufl4+fl5Ofl5ufl5ujm5+jmySDnBAAAAFp0Uk5TAAECAgMEBAYHCA0NDg4UGRogIiMmKSssLzU7PkJJT1JTVFliY2hrdHZ3foSFhYeJjY2QkpugqbG1tre5w8zQ09XY3uXn6+zx8vT09vf4+Pj5+fr6/P39/f3+gz7SsAAAAVVJREFUOMtjYKA7EBDnwCPLrObS1BRiLoJLnte6CQy8FLHLCzs2QUG4FjZ5GbcmBDDjxJBXDWxCBrb8aM4zbkIDzpLYnAcE9VXlJSWlZRU13koIeW57mGx5XjoMZEUqwxWYQaQbSzLSkYGfKFSe0QMsX5WbjgY0YS4MBplemI4BdGBW+DQ11eZiymfqQuXZIjqwyadPNoSZ4L+0FVM6e+oGI6g8a9iKNT3o8kVzNkzRg5lgl7p4wyRUL9Yt2jAxVh6mQCogae6GmflI8p0r13VFWTHBQ0rWPW7ahgWVcPm+9cuLoyy4kCJDzCm6d8PSFoh0zvQNC5OjDJhQopPPJqph1doJBUD5tnkbZiUEqaCnB3bTqLTFG1bPn71kw4b+GFdpLElKIzRxxgYgWNYc5SCENVHKeUaltHdXx0dZ8uBI1hJ2UUDgq82CM2MwKeibqAvSO7MCABq0wXEPiqWEAAAAAElFTkSuQmCC"></a>
+                                </li>
+                            </ul><button type="button" title="Attributions"><span>i</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="adres-panel">
+                <div id="adres-panel-content">
+                    <i class="glyphicon glyphicon-map-marker" aria-hidden="true" style="color:#4f94ec;"></i> <span
+                        id="anaMetin" style="display: none;">Adres seçimi için tıklayınız</span>
+                    <span id="ilKayitNo">BURSA</span>
+                    <span id="ilceKayitNo"> / MUDANYA</span>
+                    <span id="mahalleKoyBaglisiListesiKayitNo"> / BADEMLİ MAHALLESİ</span>
+                    <span id="yolKayitNo"> / SİMGE (Sokak)</span>
+                    <span id="binaKayitNo"> / 29 - Mesken - Bina Ana Giriş - Bilinmeyen</span>
+                    <span id="bagimsizBolumKayitNo"> / Kullanım Amacı : Mesken - Tip : Özel - Durum : Bilinmeyen</span>
+                </div>
+            </div>
+            <div id="adres-bilgisi-panel" style="">
+                <div id="adres-bilgisi-panel-content"><i class="glyphicon glyphicon-pushpin" aria-hidden="true"></i>
+                    <span>Bağımsız Bölüm Kimlik No : 1533123566</span></div>
+            </div>
+
+            <input type="hidden" name="tccaptchaWidgetId" value="1">
+
+            <script>
+                var harita;
+                var AKSHaritaInit = function (containerId) {
+                    var options = {};
+                    options.baseUrl = (kale.serverDefinitions.baseActionAddress == "") ? "/" : kale.serverDefinitions.baseActionAddress;
+                    options.mapElementId = 'map';
+                    options.mapContainerElementId = containerId;
+                    options.adresSecimReCaptchaVisibility = true;
+                    options.reCaptchaVisibility = true;
+                    options.reCaptchaSelectorId = "tccaptcha";
+                    harita = new AKSHarita(options).init();
+                }
+
+                $(function () {
+                    _initializeAKSHaritaPanels('body');
+                });
+            </script>
+
+        </div>
+
+
+
+
+    </div>
+    <div>
+        <nav class="cookieFooter">
+            <span><b>Sizlere daha iyi hizmet verebilmek için sitemizde çerezlere yer veriyoruz.</b> Çerez politikamız
+                hakkında bilgi edinmek için <a href="#" id="openPopup" target="_parent">tıklayınız.</a></span>
+            <button class="btn btn-success" type="button" id="btnKabulEt">
+                <span class="navbar-toggler-icon text">Kabul Et</span>
+            </button>
+        </nav>
+    </div>
+
+
+    <div class="modal fade" id="cookiePolicy" tabindex="-1" role="dialog" aria-labelledby="editPopupLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="form-group">
+                        <div class="form-horizontal col-sm-12">
+                            <div class="form-horizontal col-sm-11">
+                                <h2 class="panel-title text-center">
+                                    <b>
+                                        T.C. İÇİŞLERİ BAKANLIĞI WEB SİTESİ GİZLİLİK VE ÇEREZ POLİTİKASI
+                                    </b>
+                                </h2>
+                            </div>
+                            <div class="form-horizontal col-sm-1">
+                                <button type="button" class="close closeColor" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="padding: 5px; overflow-y: scroll; max-height: 800px">
+                    &emsp;T.C. İçişleri Bakanlığı tarafından işletilen www.icisleri.gov.tr web sitesini ziyaret
+                    edenlerin kişisel verilerini 6698 sayılı Kişisel Verilerin Korunması Kanunu uyarınca işlemekte ve
+                    gizliliğini korumaktayız. Bu Web Sitesi Gizlilik ve Çerez Politikası ile ziyaretçilerin kişisel
+                    verilerinin işlenmesi, çerez politikası ve internet sitesi gizlilik ilkeleri belirlenmektedir.
+                    <br> <br>
+
+                    &emsp;Çerezler (cookies), küçük bilgileri saklayan küçük metin dosyalarıdır. Çerezler, ziyaret
+                    ettiğiniz internet siteleri tarafından, tarayıcılar aracılığıyla cihazınıza veya ağ sunucusuna
+                    depolanır. İnternet sitesi tarayıcınıza yüklendiğinde, çerezler cihazınızda saklanır. Çerezler,
+                    internet sitesinin düzgün çalışmasını, daha güvenli hale getirilmesini, daha iyi kullanıcı deneyimi
+                    sunmasını sağlar. Oturum ve yerel depolama alanları da çerezlerle aynı amaç için kullanılır.
+                    İnternet sitemizde çerez bulunmamakta, oturum ve yerel depolama alanları çalışmaktadır.
+                    <br> <br>
+
+                    &emsp;Web sitemizin ziyaretçiler tarafından en verimli şekilde faydalanılması için çerezler
+                    kullanılmaktadır. Çerezler tercih edilmemesi halinde tarayıcı ayarlarından silinebilir ya da
+                    engellenebilir. Ancak bu web sitemizin performansını olumsuz etkileyebilir. Ziyaretçi tarayıcıdan
+                    çerez ayarlarını değiştirmediği sürece bu sitede çerez kullanımını kabul ettiği varsayılır.
+                    <br> <br>
+
+                    &emsp;<b>1.Kişisel Verilerin İşlenme Amacı</b><br>
+                    Web sitemizi ziyaret etmeniz dolayısıyla elde edilen kişisel verileriniz aşağıda sıralanan amaçlarla
+                    T.C. İçişleri Bakanlığı tarafından Kanun’un 5. ve 6. maddelerine uygun olarak işlenmektedir:
+                    <br> <br>
+
+                    &emsp;T.C. İçişleri Bakanlığı tarafından yürütülen ticari faaliyetlerin yürütülmesi için gerekli
+                    çalışmaların yapılması ve buna bağlı iş süreçlerinin gerçekleştirilmesi,
+                    T.C. İçişleri Bakanlığı tarafından sunulan ürün ve hizmetlerden ilgili kişileri faydalandırmak için
+                    gerekli çalışmaların yapılması ve ilgili iş süreçlerinin gerçekleştirilmesi,
+                    T.C. İçişleri Bakanlığı tarafından sunulan ürün ve hizmetlerin ilgili kişilerin beğeni, kullanım
+                    alışkanlıkları ve ihtiyaçlarına göre özelleştirilerek ilgili kişilere önerilmesi ve tanıtılması.
+                    <br> <br>
+
+                    &emsp;<b>2.Kişisel Verilerin Aktarıldığı Taraflar ve Aktarım Amacı</b><br>
+                    Web sitemizi ziyaret etmeniz dolayısıyla elde edilen kişisel verileriniz, kişisel verilerinizin
+                    işlenme amaçları doğrultusunda, iş ortaklarımıza, tedarikçilerimize kanunen yetkili kamu kurumlarına
+                    ve özel kişilere Kanun’un 8. ve 9. maddelerinde belirtilen kişisel veri işleme şartları ve amaçları
+                    kapsamında aktarılabilmektedir.
+                    <br> <br>
+
+                    &emsp;<b>3.Kişisel Verilerin Toplanma Yöntemi</b><br>
+                    Çerezler, ziyaret edilen internet siteleri tarafından tarayıcılar aracılığıyla cihaza veya ağ
+                    sunucusuna depolanan küçük metin dosyalarıdır. Web sitemiz ziyaret edildiğinde, kişisel verilerin
+                    saklanması için herhangi bir çerez kullanılmamaktadır.
+                    <br> <br>
+
+                    &emsp;<b>4.Çerezleri Kullanım Amacı</b><br>
+                    Web sitemiz birinci ve üçüncü taraf çerezleri kullanır. Birinci taraf çerezleri çoğunlukla web
+                    sitesinin doğru şekilde çalışması için gereklidir, kişisel verilerinizi tutmazlar. Üçüncü taraf
+                    çerezleri, web sitemizin performansını, etkileşimini, güvenliğini, reklamları ve sonucunda daha iyi
+                    bir hizmet sunmak için kullanılır. Kullanıcı deneyimi ve web sitemizle gelecekteki etkileşimleri
+                    hızlandırmaya yardımcı olur. Bu kapsamda çerezler;
+                    <br> <br>
+
+                    &emsp;İşlevsel: Bunlar, web sitemizdeki bazı önemli olmayan işlevlere yardımcı olan çerezlerdir. Bu
+                    işlevler arasında videolar gibi içerik yerleştirme veya web sitesindeki içerikleri sosyal medya
+                    platformlarında paylaşma yer alır.
+                    <br> <br>
+
+                    &emsp;Teknik olarak web sitemizde kullanılan çerez türleri aşağıdaki tabloda gösterilmektedir.
+                    <br> <br>
+                    <table border="1">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    Oturum Çerezleri (Session Cookies) :
+                                </td>
+                                <td>
+                                    Oturum çerezleri ziyaretçilerimizin web sitemizi ziyaretleri süresince kullanılan,
+                                    tarayıcı kapatıldıktan sonra silinen geçici çerezlerdir. Amacı ziyaretiniz süresince
+                                    İnternet Sitesinin düzgün bir biçimde çalışmasının teminini sağlamaktır.
+                                    (ASP.NET_SessionId)
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+
+                    &emsp;Web sitemizde çerez kullanılmasının başlıca amaçları aşağıda sıralanmaktadır:
+                    <br> <br>
+
+                    &emsp;• İnternet sitesinin işlevselliğini ve performansını arttırmak yoluyla sizlere sunulan
+                    hizmetleri geliştirmek,
+                    <br><br>
+                    &emsp;<b>5.Çerez Tercihlerini Kontrol Etme</b><br>
+                    &emsp;Farklı tarayıcılar web siteleri tarafından kullanılan çerezleri engellemek ve silmek için
+                    farklı yöntemler sunar. Çerezleri engellemek / silmek için tarayıcı ayarları değiştirilmelidir.
+                    Tanımlama bilgilerinin nasıl yönetileceği ve silineceği hakkında daha fazla bilgi edinmek için <a
+                        href="https://www.allaboutcookies.org" target="_parent">www.allaboutcookies.org</a> adresini
+                    ziyaret edilebilir. Ziyaretçi, tarayıcı ayarlarını değiştirerek çerezlere ilişkin tercihlerini
+                    kişiselleştirme imkânına sahiptir.
+                    <br> <br>
+
+                    &emsp;<b>6.Veri Sahiplerinin Hakları</b><br>
+                    &emsp;Kanunun “ilgili kişinin haklarını düzenleyen” 11. maddesi kapsamındaki talepleri, Politika’da
+                    düzenlendiği şekilde, ayrıntısını <a
+                        href="https://www.icisleri.gov.tr//kurumlar/icisleri.gov.tr/Cerez-Politikasi-Basvuru/I%CC%87c%CC%A7is%CC%A7leri-Bakanlig%CC%86i-Bas%CC%A7vuru-Formu.docx"
+                        target="_parent">Başvuru Formu’nu</a> Bakanlığımıza ileterek yapabilir. Talebin niteliğine göre
+                    en kısa sürede ve en geç otuz gün içinde başvuruları ücretsiz olarak sonuçlandırılır; ancak işlemin
+                    ayrıca bir maliyet gerektirmesi halinde Kişisel Verileri Koruma Kurulu tarafından belirlenecek
+                    tarifeye göre ücret talep edilebilir.
+                </div>
+
+                <div class="panel-body">
+                    <div class="button-wrap pull-right">
+                        <div class="btn-group col-sm-6">
+                            <button type="submit" data-dismiss="modal" class="btn btn-danger" id="btnPopupKabulEt">KABUL
+                                ET</button>
+                        </div>
+                        <div class="btn-group col-sm-6">
+                            <button type="submit" data-dismiss="modal" class="btn btn-danger">VAZGEÇ</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#btnPopupKabulEt").click(function () {
+                AksCookieUtil.addAppCookie("cookiesAccepted", true);
+                $(".cookieFooter").attr("hidden", "hidden");
+            });
+        })
+    </script>
+
+
+    <script>
+        var cookiesAccepted = AksCookieUtil.getAppCookie("cookiesAccepted");
+
+        if (cookiesAccepted == true) {
+            $(".cookieFooter").attr("hidden", "hidden");
+        }
+
+        $("#btnKabulEt").click(function () {
+            AksCookieUtil.addAppCookie("cookiesAccepted", true,);
+            $(".cookieFooter").attr("hidden", "hidden");
+        });
+
+        $("#openPopup").click(function () {
+            $("#cookiePolicy").modal("show");
+        });
+
+    </script>
+
+
+
+    <script type="text/javascript">
+        kaleModule = new kale.Module({ target: $('#tarihselBody') });
+
+
+        kale.cacheManager = new LSCache();
+        var clientInfo = kale.serverDefinitions.userDefinitions.username + kale.serverDefinitions.userDefinitions.organizationType;
+        var clientVersion = kale.cacheManager.get("AKS-VERSION");
+        var versionNo = "1.2023.1229.1";
+
+
+        if (clientVersion != versionNo.toString()) {
+            kale.cacheManager.flush();
+            kale.cacheManager.set("AKS-VERSION", versionNo);
+        }
+
+
+        kale.cacheManager.setBucket("AKS-" + clientInfo.hashCode(versionNo) + "-");
+    </script>
+
+
+
+
+
+
+
+
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../" target="_parent">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <img style="margin-top:-3px" height="50" src="/Styles/image/BirimLogosu-15.png" alt="NVİ">
+                        </div>
+
+
+                    </div>
+                </a>
+            </div>
+            <div id="navbar" class="navbar-collapse navbar-right collapse">
+                <ul hidden="">
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            function getSubUrlForMenuItems(area, controller, action, parameters) {
+                var urlArray = [],
+                    url,
+                    hasParameter = false;
+
+                if (area != "" && area != null)
+                    urlArray.push(area);
+
+                if (controller != "" && controller != null)
+                    urlArray.push(controller);
+
+                if (parameters == null || parameters == "") {
+                    if (action != "Index" && action != "" && action != null)
+                        urlArray.push(action);
+                }
+                else {
+                    hasParameter = true;
+                    urlArray.push(action);
+                }
+
+                url = urlArray.join("/");
+
+                if (hasParameter)
+                    url = url.concat("?" + parameters);
+
+                return "/" + url;
+            }
+
+            function placeMenuItems(menuItems) {
+
+
+                if (menuItems == null || menuItems.length == 0)
+                    return;
+
+                var clientUrl = kale.serverDefinitions.baseActionAddress;
+                var dividerTemplate = '<li class="divider"></li>';
+                var nonParentMenuTemplate = '<li><a href="{0}">{1}</a></li>';
+                var nonParentMenuTemplateWithJSAction = '<li><a href="#" onclick="{0}">{1}</a></li>';
+                var dropdownMenuTemplate = '<li class="dropdown"><a href="#" class="dropdown" data-toggle="dropdown">{0}<b class="caret"></b></a><ul class="dropdown-menu altmenu mainmenu" id="{1}"></ul></li>';
+                var menuInsertionPoint = $("#navbar > ul").find("li:first");
+
+                var mainMenuList = menuItems.where(function (item) {
+                    return item.isMainMenu == true;
+                });
+
+                for (var i = 0; i < mainMenuList.length; i++) {
+                    var childList = menuItems.where(function (item) {
+                        return item.parentKayitNo == mainMenuList[i].kayitNo;
+                    });
+
+                    if (childList.length > 0) {
+                        var mainMenuId = mainMenuList[i].title + "-" + mainMenuList[i].kayitNo;
+                        menuInsertionPoint.before(dropdownMenuTemplate.format(mainMenuList[i].title, mainMenuId));
+
+
+                        while (childList.length > 0 && childList.first().isDivider == true) {
+                            childList.removeItemAt(0);
+                        }
+
+
+                        while (childList.length > 0 && childList.last().isDivider == true) {
+                            childList.removeItemAt(childList.length - 1);
+                        }
+
+                        for (var j = 0; j < childList.length; j++) {
+                            if (childList[j].isDivider) {
+                                if (j > 0 && childList[j - 1].isDivider == false)
+                                    $("#" + mainMenuId).append(dividerTemplate);
+                            }
+                            else {
+                                var externalUrl = childList[j].externalUrl;
+
+                                if (externalUrl != null) {
+                                    if (externalUrl.indexOf("("))
+                                        $("#" + mainMenuId).append(nonParentMenuTemplateWithJSAction.format(externalUrl, childList[j].title));
+                                    else
+                                        $("#" + mainMenuId).append(nonParentMenuTemplate.format(externalUrl, childList[j].title));
+                                }
+                                else {
+                                    var url = clientUrl + getSubUrlForMenuItems(childList[j].area, childList[j].controller, childList[j].action, childList[j].parameters);
+                                    $("#" + mainMenuId).append(nonParentMenuTemplate.format(url, childList[j].title));
+                                }
+
+                            }
+                        }
+                    }
+                    else {
+                        var externalUrl = mainMenuList[i].externalUrl;
+
+                        if (externalUrl != null) {
+                            if (externalUrl.indexOf("("))
+                                menuInsertionPoint.before(nonParentMenuTemplateWithJSAction.format(externalUrl, mainMenuList[i].title));
+                            else
+                                menuInsertionPoint.before(nonParentMenuTemplate.format(externalUrl, mainMenuList[i].title));
+                        }
+                        else {
+                            var url = clientUrl + getSubUrlForMenuItems(mainMenuList[i].area, mainMenuList[i].controller, mainMenuList[i].action, mainMenuList[i].parameters);
+                            menuInsertionPoint.before(nonParentMenuTemplate.format(url, mainMenuList[i].title));
+                        }
+                    }
+                }
+            }
+
+            function getMenuItemsAndPlaceThem() {
+                var options = {
+                    url: '/GetAuthorizedMenuItems',
+                    type: EnmAksAjaxRequestType.GET,
+                    onSuccess: function (items) {
+                        placeMenuItems(items.data);
+                        kale.cacheManager.set("AuthorizedMenuItems", items.data, 24 * 60);
+                    },
+                };
+
+                kale.ajaxUtil.sendRequest(options);
+            }
+
+            var isAnonymous = false;
+            if (kale.serverDefinitions.userDefinitions.username == "app_aks_anonymous")
+                isAnonymous = true;
+
+            if (!isAnonymous) {
+                var myData = kale.cacheManager.get("AuthorizedMenuItems");
+                if (myData != null)
+                    placeMenuItems(myData);
+                else
+                    getMenuItemsAndPlaceThem();
+            }
+            else
+                placeMenuItems(null);
+        });
+    </script>
+
+
+    <script type="text/javascript">
+        var userClickedSendButton = false;
+
+        function afterErrorSent(isBulkOperation) {
+            if (userClickedSendButton == true && isBulkOperation == false)
+                kale.messageUtil.ShowSuccessOnMiddle("Geri bildiriminiz başarıyla kaydedilmiştir.");
+            $("#geriBildirimPopup").modal("hide");
+        }
+
+        function onExceptionCaught(errorMessage) {
+
+            $(document.body).loadingOverlay("remove");
+
+            var uselessStr = "Error: ";
+            if (errorMessage.match(uselessStr)) {
+                errorMessage = errorMessage.substring(errorMessage.indexOf(uselessStr) + uselessStr.length, errorMessage.length);
+            }
+
+            var messageTag = "MSG-";
+            if (!errorMessage || errorMessage == "" || errorMessage == "ignoreException")
+                return false;
+
+            if (errorMessage.match("^" + messageTag)) {
+                kale.messageUtil.ShowErrorOnMiddle(errorMessage.substring(messageTag.length, errorMessage.length));
+                return false;
+            }
+
+            return true;
+        }
+
+        function onBeforeSend(errorObject) {
+            errorObject.kullaniciMesaji = null;
+            errorObject.eposta = null;
+            var geriBildirimData = new kendo.data.ObservableObject(errorObject);
+
+            $("#geriBildirimPopupBody").empty();
+            var options = {
+                url: '/Yonetim/GeriBildirim/IndexPopup',
+                requestType: EnmAksAjaxRequestType.GET,
+                onSuccess: (function (data) {
+                    $("#geriBildirimPopupBody").html(data);
+                    kendo.bind($("#geriBildirimPopup"), geriBildirimData);
+                }),
+                showBusyIndicator: false,
+            };
+
+            kale.ajaxUtil.sendRequestReturnView(options);
+            $("#geriBildirimPopup").modal("show");
+
+            $(document).off("click", "#submitFeedbackButton");
+
+            $(document).on("click", "#submitFeedbackButton", function (e) {
+                userClickedSendButton = true;
+                kale.errorHandler.sendOneErrorByHttp(geriBildirimData);
+            });
+
+            $(document).off("hidden.bs.modal", "#geriBildirimPopup");
+
+            $(document).on("hidden.bs.modal", "#geriBildirimPopup", function (e) {
+                if (userClickedSendButton == false)
+                    kale.errorHandler.sendOneErrorByHttp(geriBildirimData);
+
+                userClickedSendButton = false;
+            });
+
+            return false;
+        }
+
+
+        function onBeforeAskUser(errorObject) {
+            errorObject.geriBildirimTipi = CstGeriBildirimTip.Hata;
+            errorObject.isGeriBildirim = false;
+        }
+
+
+        function toFlat(errorObj, flatObj) {
+
+
+            var dummy = {};
+
+            dummy.Mesaj = errorObj.message;
+            dummy.DosyaAdres = errorObj.fileLocation;
+            dummy.HataGUID = errorObj.hataGUID;
+            dummy.HataSatir = errorObj.line;
+            dummy.HataSutun = errorObj.column;
+            dummy.StackTrace = errorObj.stackTrace;
+            dummy.GeriBildirimTipi = errorObj.geriBildirimTipi;
+            dummy.HataOncelik = 1;
+            dummy.EkranGoruntusu = btoa(errorObj.image);
+            dummy.EkranYukseklik = errorObj.clientInfo.screen.actualHeight;
+            dummy.EkranGenislik = errorObj.clientInfo.screen.actualWidth;
+            dummy.PencereYukseklik = errorObj.clientInfo.screen.availHeight;
+            dummy.PencereGenislik = errorObj.clientInfo.screen.availWidth;
+            dummy.TarayiciIsim = errorObj.clientInfo.browser.browserName;
+            dummy.TarayiciVersiyon = errorObj.clientInfo.browser.majorVersion;
+            dummy.TarayiciPlatform = errorObj.clientInfo.navigator.platform;
+            dummy.TarayiciDil = errorObj.clientInfo.navigator.language;
+            dummy.TarayiciCookie = errorObj.clientInfo.navigator.cookieEnabled;
+            dummy.TarayiciAgent = errorObj.clientInfo.navigator.userAgent;
+            dummy.Incelendi = false;
+            dummy.KullaniciMesaji = errorObj.kullaniciMesaji;
+            dummy.Eposta = errorObj.eposta;
+
+            flatObj.Model = dummy;
+
+
+            dummy.HataTarih = null;
+
+            flatObj.HataTarihInMilliseconds = errorObj.time;
+
+        }
+
+        var geriBildirimLink = '/Yonetim/GeriBildirim/GeriBildirimEkle';
+        kale.errorHandler = new KaleErrorHandler(false, true, false);
+        kale.errorHandler.init(geriBildirimLink, onExceptionCaught, onBeforeAskUser, onBeforeSend, afterErrorSent, toFlat);
+    </script>
+
+
+    <div class="modal fade" id="geriBildirimPopup" tabindex="-1" role="dialog" aria-labelledby="geriBildirimPopupLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" id="closeButton" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h3 class="modal-title danger" id="geriBildirimPopupLabel">Sistemde teknik bir hata oluştu.</h3>
+                </div>
+                <div class="modal-body" id="geriBildirimPopupBody">
+                </div>
+                <div class="modal-footer" id="geriBildirimPopupFooter">
+                    <button type="submit" class="btn btn-primary" id="submitFeedbackButton">Gönder</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <input name="__RequestVerificationToken" type="hidden"
+        value="0G2JRkkB54HA9rdWx-7A5J9zckn7414PPKheTD54KvhPVXAxkDdY4gxPY_Q6fsw2qDKHVurRZ85L_nTiJZzexIbIMxU1">
+
+
+
+    <script>
+
+        kendo.culture("tr-TR");
+
+        $(function () {
+            var applicationUrl = '/';
+
+
+            $.ajaxSetup({
+                "beforeSend": function (xhr) {
+                    var securityToken = $("[name=__RequestVerificationToken]").val();
+                    xhr.setRequestHeader("__RequestVerificationToken", securityToken);
+                }
+            });
+
+            prepareScroll();
+        });
+
+        function prepareScroll() {
+
+            var scrollAnimation = false;
+            var didScroll = false;
+
+            function smoothScroll(elementToBeScrolled, scrollTime, scrollDistance, event) {
+                var delta = event.originalEvent.wheelDelta / 120 || -event.originalEvent.detail / 3;
+                var scrollTop = $(elementToBeScrolled).scrollTop();
+
+                var finalScroll = scrollTop - parseInt(delta * scrollDistance);
+
+                TweenLite.to(elementToBeScrolled, scrollTime, {
+                    scrollTo: { y: finalScroll, autoKill: true },
+                    ease: Power1.easeOut,	//For more easing functions see http://api.greensock.com/js/com/greensock/easing/package-detail.html
+                    autoKill: true,
+                    overwrite: 1
+                });
+            }
+
+
+            if (scrollAnimation) {
+                var wheelEvent;
+
+                $(document).on('mousewheel DOMMouseScroll', function (event) {
+                    didScroll = true;
+                    wheelEvent = event;
+                });
+
+                setInterval(function () {
+                    if (didScroll) {
+                        didScroll = false;
+
+                        if (!scrollAnimation)
+                            return;
+
+                        wheelEvent.preventDefault();
+                        wheelEvent.stopPropagation();
+
+                        smoothScroll(window, 0.59, 200, wheelEvent);
+                    }
+                }, 150);
+            }
+
+
+            $(document.body).on('mousewheel DOMMouseScroll', '.k-list-scroller', function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+
+                smoothScroll(event.currentTarget, 0.59, 200, event);
+            });
+
+
+            $(document.body).on('mousewheel DOMMouseScroll', '.noty_message', function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+
+                smoothScroll(event.currentTarget, 0.59, 200, event);
+            });
+        }
+    </script>
+    <div class="adres-panel-popup-layer" style="display: none;">
+        <div class="adres-panel-popup-layer-content"
+            style="inset: 0px 100% 0px 0px; color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); transition: all 0.3s ease 0s;">
+            <div id="lokasyonForm">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 margin-top-5">
+                        <div id="adrescaptcha">
+                            <div style="width: 304px; height: 78px;">
+                                <div><iframe title="reCAPTCHA" width="304" height="78" role="presentation"
+                                        name="a-3efj5na2xogr" frameborder="0" scrolling="no"
+                                        sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation"
+                                        src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LcrFjwUAAAAABui7fXG9wtscqRlt6Avzxfxkmdz&amp;co=aHR0cHM6Ly9hZHJlcy5udmkuZ292LnRyOjQ0Mw..&amp;hl=tr&amp;v=Ya-Cd6PbRI5ktAHEhm9JuKEu&amp;size=normal&amp;cb=6atgymtjxv8r"></iframe>
+                                </div><textarea id="g-recaptcha-response" name="g-recaptcha-response"
+                                    class="g-recaptcha-response"
+                                    style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea>
+                            </div><iframe style="display: none;"></iframe>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 margin-top-5">
+                        <select id="ilListesi" name="ilKayitNo" tabindex="-1" class="select2-hidden-accessible"
+                            aria-hidden="true">
+                            <option></option>
+                            <option value="1">ADANA</option>
+                            <option value="2">ADIYAMAN</option>
+                            <option value="3">AFYONKARAHİSAR</option>
+                            <option value="4">AĞRI</option>
+                            <option value="68">AKSARAY</option>
+                            <option value="5">AMASYA</option>
+                            <option value="6">ANKARA</option>
+                            <option value="7">ANTALYA</option>
+                            <option value="75">ARDAHAN</option>
+                            <option value="8">ARTVİN</option>
+                            <option value="9">AYDIN</option>
+                            <option value="10">BALIKESİR</option>
+                            <option value="74">BARTIN</option>
+                            <option value="72">BATMAN</option>
+                            <option value="69">BAYBURT</option>
+                            <option value="11">BİLECİK</option>
+                            <option value="12">BİNGÖL</option>
+                            <option value="13">BİTLİS</option>
+                            <option value="14">BOLU</option>
+                            <option value="15">BURDUR</option>
+                            <option value="16">BURSA</option>
+                            <option value="17">ÇANAKKALE</option>
+                            <option value="18">ÇANKIRI</option>
+                            <option value="19">ÇORUM</option>
+                            <option value="20">DENİZLİ</option>
+                            <option value="21">DİYARBAKIR</option>
+                            <option value="81">DÜZCE</option>
+                            <option value="22">EDİRNE</option>
+                            <option value="23">ELAZIĞ</option>
+                            <option value="24">ERZİNCAN</option>
+                            <option value="25">ERZURUM</option>
+                            <option value="26">ESKİŞEHİR</option>
+                            <option value="27">GAZİANTEP</option>
+                            <option value="28">GİRESUN</option>
+                            <option value="29">GÜMÜŞHANE</option>
+                            <option value="30">HAKKARİ</option>
+                            <option value="31">HATAY</option>
+                            <option value="76">IĞDIR</option>
+                            <option value="32">ISPARTA</option>
+                            <option value="34">İSTANBUL</option>
+                            <option value="35">İZMİR</option>
+                            <option value="46">KAHRAMANMARAŞ</option>
+                            <option value="78">KARABÜK</option>
+                            <option value="70">KARAMAN</option>
+                            <option value="36">KARS</option>
+                            <option value="37">KASTAMONU</option>
+                            <option value="38">KAYSERİ</option>
+                            <option value="71">KIRIKKALE</option>
+                            <option value="39">KIRKLARELİ</option>
+                            <option value="40">KIRŞEHİR</option>
+                            <option value="79">KİLİS</option>
+                            <option value="41">KOCAELİ</option>
+                            <option value="42">KONYA</option>
+                            <option value="43">KÜTAHYA</option>
+                            <option value="44">MALATYA</option>
+                            <option value="45">MANİSA</option>
+                            <option value="47">MARDİN</option>
+                            <option value="33">MERSİN</option>
+                            <option value="48">MUĞLA</option>
+                            <option value="49">MUŞ</option>
+                            <option value="50">NEVŞEHİR</option>
+                            <option value="51">NİĞDE</option>
+                            <option value="52">ORDU</option>
+                            <option value="80">OSMANİYE</option>
+                            <option value="53">RİZE</option>
+                            <option value="54">SAKARYA</option>
+                            <option value="55">SAMSUN</option>
+                            <option value="56">SİİRT</option>
+                            <option value="57">SİNOP</option>
+                            <option value="58">SİVAS</option>
+                            <option value="63">ŞANLIURFA</option>
+                            <option value="73">ŞIRNAK</option>
+                            <option value="59">TEKİRDAĞ</option>
+                            <option value="60">TOKAT</option>
+                            <option value="61">TRABZON</option>
+                            <option value="62">TUNCELİ</option>
+                            <option value="64">UŞAK</option>
+                            <option value="65">VAN</option>
+                            <option value="77">YALOVA</option>
+                            <option value="66">YOZGAT</option>
+                            <option value="67">ZONGULDAK</option>
+                        </select><span
+                            class="select2 select2-container select2-container--default select2-container--below"
+                            dir="ltr" style="width: 100%;"><span class="selection"><span
+                                    class="select2-selection select2-selection--single" role="combobox"
+                                    aria-haspopup="true" aria-expanded="false" tabindex="0"
+                                    aria-labelledby="select2-ilListesi-container"><span
+                                        class="select2-selection__rendered" id="select2-ilListesi-container"
+                                        title="BURSA"><span class="select2-selection__clear">×</span>BURSA</span><span
+                                        class="select2-selection__arrow" role="presentation"><b
+                                            role="presentation"></b></span></span></span><span class="dropdown-wrapper"
+                                aria-hidden="true"></span></span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 margin-top-5">
+                        <select id="ilceListesi" name="ilceKayitNo" tabindex="-1" class="select2-hidden-accessible"
+                            aria-hidden="true">
+                            <option></option>
+                            <option value="1783">BÜYÜKORHAN</option>
+                            <option value="1343">GEMLİK</option>
+                            <option value="1935">GÜRSU</option>
+                            <option value="1799">HARMANCIK</option>
+                            <option value="1411">İNEGÖL</option>
+                            <option value="1420">İZNİK</option>
+                            <option value="1434">KARACABEY</option>
+                            <option value="1457">KELES</option>
+                            <option value="1960">KESTEL</option>
+                            <option value="1530">MUDANYA</option>
+                            <option value="1535">MUSTAFAKEMALPAŞA</option>
+                            <option value="1829">NİLÜFER</option>
+                            <option value="1553">ORHANELİ</option>
+                            <option value="1554">ORHANGAZİ</option>
+                            <option value="1832">OSMANGAZİ</option>
+                            <option value="1725">YENİŞEHİR</option>
+                            <option value="1859">YILDIRIM</option>
+                        </select><span
+                            class="select2 select2-container select2-container--default select2-container--below"
+                            dir="ltr" style="width: 100%;"><span class="selection"><span
+                                    class="select2-selection select2-selection--single" role="combobox"
+                                    aria-haspopup="true" aria-expanded="false" tabindex="0"
+                                    aria-labelledby="select2-ilceListesi-container"><span
+                                        class="select2-selection__rendered" id="select2-ilceListesi-container"
+                                        title="MUDANYA"><span
+                                            class="select2-selection__clear">×</span>MUDANYA</span><span
+                                        class="select2-selection__arrow" role="presentation"><b
+                                            role="presentation"></b></span></span></span><span class="dropdown-wrapper"
+                                aria-hidden="true"></span></span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 margin-top-5">
+                        <select id="mahalleKoyBaglisiListesi" name="mahalleKoyBaglisiListesiKayitNo" tabindex="-1"
+                            class="select2-hidden-accessible" aria-hidden="true">
+                            <option></option>
+                            <option value="184225">AKKÖY MAHALLESİ</option>
+                            <option value="184227">ALTINTAŞ MAHALLESİ</option>
+                            <option value="184229">AYDINPINAR MAHALLESİ</option>
+                            <option value="20007">BADEMLİ MAHALLESİ</option>
+                            <option value="184231">BALABANCIK MAHALLESİ</option>
+                            <option value="184233">ÇAĞRIŞAN MAHALLESİ</option>
+                            <option value="184265">ÇAMLIK MAHALLESİ</option>
+                            <option value="184267">ÇAYÖNÜ MAHALLESİ</option>
+                            <option value="184235">ÇEKRİCE MAHALLESİ</option>
+                            <option value="184237">ÇEPNİ MAHALLESİ</option>
+                            <option value="184269">ÇINARLI MAHALLESİ</option>
+                            <option value="184239">DEDEKÖY MAHALLESİ</option>
+                            <option value="184241">DEREKÖY MAHALLESİ</option>
+                            <option value="184277">EĞERCE MAHALLESİ</option>
+                            <option value="184271">EMİRLERYENİCESİ MAHALLESİ</option>
+                            <option value="184273">ESENCE MAHALLESİ</option>
+                            <option value="184275">EVCİLER MAHALLESİ</option>
+                            <option value="184243">GÖYNÜKLÜ MAHALLESİ</option>
+                            <option value="20010">GÜZELYALI BURGAZ MAHALLESİ</option>
+                            <option value="20011">GÜZELYALI EĞİTİM MAHALLESİ</option>
+                            <option value="20012">GÜZELYALI SİTELER MAHALLESİ</option>
+                            <option value="20013">GÜZELYALI YALI MAHALLESİ</option>
+                            <option value="20001">HALİTPAŞA MAHALLESİ</option>
+                            <option value="184279">HANÇERLİ MAHALLESİ</option>
+                            <option value="20002">HASANBEY MAHALLESİ</option>
+                            <option value="20008">HASKÖY MAHALLESİ</option>
+                            <option value="184245">IŞIKLI MAHALLESİ</option>
+                            <option value="184247">İPEKYAYLA MAHALLESİ</option>
+                            <option value="184249">KAYMAKOBA MAHALLESİ</option>
+                            <option value="184251">KUMYAKA MAHALLESİ</option>
+                            <option value="184253">KÜÇÜKYENİCE MAHALLESİ</option>
+                            <option value="184281">MESUDİYE MAHALLESİ</option>
+                            <option value="184255">MİRZAOBA MAHALLESİ</option>
+                            <option value="184257">MÜRSEL MAHALLESİ</option>
+                            <option value="20003">MÜTAREKE MAHALLESİ</option>
+                            <option value="184259">ORHANİYE MAHALLESİ</option>
+                            <option value="20004">ÖMERBEY MAHALLESİ</option>
+                            <option value="184283">SÖĞÜTPINAR MAHALLESİ</option>
+                            <option value="20005">ŞÜKRÜÇAVUŞ MAHALLESİ</option>
+                            <option value="184223">TİRİLYE MAHALLESİ</option>
+                            <option value="20009">ÜLKÜ MAHALLESİ</option>
+                            <option value="184285">YALIÇİFTLİK MAHALLESİ</option>
+                            <option value="184287">YAMAN MAHALLESİ</option>
+                            <option value="184261">YAYLACIK MAHALLESİ</option>
+                            <option value="20006">YENİ MAHALLESİ</option>
+                            <option value="184263">YÖRÜKALİ MAHALLESİ</option>
+                            <option value="184289">YÖRÜKYENİCESİ MAHALLESİ</option>
+                        </select><span
+                            class="select2 select2-container select2-container--default select2-container--below"
+                            dir="ltr" style="width: 100%;"><span class="selection"><span
+                                    class="select2-selection select2-selection--single" role="combobox"
+                                    aria-haspopup="true" aria-expanded="false" tabindex="0"
+                                    aria-labelledby="select2-mahalleKoyBaglisiListesi-container"><span
+                                        class="select2-selection__rendered"
+                                        id="select2-mahalleKoyBaglisiListesi-container" title="BADEMLİ MAHALLESİ"><span
+                                            class="select2-selection__clear">×</span>BADEMLİ MAHALLESİ</span><span
+                                        class="select2-selection__arrow" role="presentation"><b
+                                            role="presentation"></b></span></span></span><span class="dropdown-wrapper"
+                                aria-hidden="true"></span></span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 margin-top-5">
+                        <select id="yolListesi" name="yolKayitNo" tabindex="-1" class="select2-hidden-accessible"
+                            aria-hidden="true">
+                            <option></option>
+                            <option value="962116">1000 (Sokak)</option>
+                            <option value="962118">1001 (Sokak)</option>
+                            <option value="995269">1002 (Sokak)</option>
+                            <option value="962120">1003 (Sokak)</option>
+                            <option value="962124">1004 (Sokak)</option>
+                            <option value="962128">1005 (Sokak)</option>
+                            <option value="962130">1006 (Sokak)</option>
+                            <option value="962132">1007 (Sokak)</option>
+                            <option value="962134">1008 (Sokak)</option>
+                            <option value="962136">1009 (Sokak)</option>
+                            <option value="962138">1010 (Sokak)</option>
+                            <option value="962140">1011 (Sokak)</option>
+                            <option value="962142">1012 (Sokak)</option>
+                            <option value="962144">1013 (Sokak)</option>
+                            <option value="962146">1014 (Sokak)</option>
+                            <option value="962148">1015 (Sokak)</option>
+                            <option value="995239">1016 (Sokak)</option>
+                            <option value="962150">1017 (Sokak)</option>
+                            <option value="962152">1018 (Sokak)</option>
+                            <option value="962154">1019 (Sokak)</option>
+                            <option value="962158">1020 (Sokak)</option>
+                            <option value="962160">1021 (Sokak)</option>
+                            <option value="962162">1022 (Sokak)</option>
+                            <option value="962168">1023 (Sokak)</option>
+                            <option value="962170">1024 (Sokak)</option>
+                            <option value="962172">1025 (Sokak)</option>
+                            <option value="962174">1026 (Sokak)</option>
+                            <option value="962176">1027 (Sokak)</option>
+                            <option value="962178">1028 (Sokak)</option>
+                            <option value="962180">1029 (Sokak)</option>
+                            <option value="962182">1030 (Sokak)</option>
+                            <option value="962184">1031 (Sokak)</option>
+                            <option value="962186">1032 (Sokak)</option>
+                            <option value="962188">1033 (Sokak)</option>
+                            <option value="1064915">1034 (Sokak)</option>
+                            <option value="1064917">1035 (Sokak)</option>
+                            <option value="1064921">1036 (Sokak)</option>
+                            <option value="1064923">1037 (Sokak)</option>
+                            <option value="1094558">1038 (Sokak)</option>
+                            <option value="1094560">1039 (Sokak)</option>
+                            <option value="1094562">1040 (Sokak)</option>
+                            <option value="1094564">1041 (Sokak)</option>
+                            <option value="1094566">1042 (Sokak)</option>
+                            <option value="1094568">1043 (Sokak)</option>
+                            <option value="1094570">1044 (Sokak)</option>
+                            <option value="1094572">1045 (Sokak)</option>
+                            <option value="1094574">1046 (Sokak)</option>
+                            <option value="1094576">1047 (Sokak)</option>
+                            <option value="1094578">1048 (Sokak)</option>
+                            <option value="1094580">1049 (Sokak)</option>
+                            <option value="1303031">1050 (Sokak)</option>
+                            <option value="1303033">1051 (Sokak)</option>
+                            <option value="1303037">1052 (Sokak)</option>
+                            <option value="1303039">1053 (Sokak)</option>
+                            <option value="1303041">1054 (Sokak)</option>
+                            <option value="1303043">1055 (Sokak)</option>
+                            <option value="1303045">1056 (Sokak)</option>
+                            <option value="1376003">1057 (Sokak)</option>
+                            <option value="683554">2. (Cadde)</option>
+                            <option value="656669">20. (Sokak)</option>
+                            <option value="657264">22. (Sokak)</option>
+                            <option value="102837">24. (Sokak)</option>
+                            <option value="657087">26. (Sokak)</option>
+                            <option value="654423">28. (Sokak)</option>
+                            <option value="648504">30. (Sokak)</option>
+                            <option value="646563">32. (Sokak)</option>
+                            <option value="645859">34. (Sokak)</option>
+                            <option value="649058">36. (Sokak)</option>
+                            <option value="656537">38. (Sokak)</option>
+                            <option value="674785">4. (Sokak)</option>
+                            <option value="840916">40 . (Sokak)</option>
+                            <option value="840930">42 . (Sokak)</option>
+                            <option value="841194">44 . (Sokak)</option>
+                            <option value="841196">46 . (Sokak)</option>
+                            <option value="841207">48 . (Sokak)</option>
+                            <option value="841209">50 . (Sokak)</option>
+                            <option value="841058">52 . (Sokak)</option>
+                            <option value="841140">54 . (Sokak)</option>
+                            <option value="841138">56 . (Sokak)</option>
+                            <option value="841095">58. (Sokak)</option>
+                            <option value="1276227">6. (Cadde)</option>
+                            <option value="840932">62 . (Sokak)</option>
+                            <option value="841075">63. (Sokak)</option>
+                            <option value="201299">8. (Sokak)</option>
+                            <option value="649064">ALİ AKMAN (Cadde)</option>
+                            <option value="1305603">ALİ DURMAZ (Cadde)</option>
+                            <option value="659091">ARDA (Sokak)</option>
+                            <option value="657399">ASLAN (Sokak)</option>
+                            <option value="674591">ASMA (Cadde)</option>
+                            <option value="656475">AYDOĞDU (Sokak)</option>
+                            <option value="841208">BADEM (Sokak)</option>
+                            <option value="678544">BADEM ÇIKMAZ (Sokak)</option>
+                            <option value="679615">BADEMLİ (Cadde)</option>
+                            <option value="841206">BEGONVİL (Sokak)</option>
+                            <option value="840909">BESTE (Sokak)</option>
+                            <option value="841062">BİRSEN (Sokak)</option>
+                            <option value="657084">BULUT (Sokak)</option>
+                            <option value="313697">BURSA YOLU (Cadde)</option>
+                            <option value="675235">CÖMERT (Sokak)</option>
+                            <option value="678524">ÇINAR (Sokak)</option>
+                            <option value="684422">DOĞU (Sokak)</option>
+                            <option value="665109">EGEMEN (Sokak)</option>
+                            <option value="76242">EĞİTİM (Cadde)</option>
+                            <option value="905906471">EKİM (Sokak)</option>
+                            <option value="163795">ESKİ MUDANYA (Cadde)</option>
+                            <option value="841139">EVREN (Sokak)</option>
+                            <option value="841102">GARDENYA (Sokak)</option>
+                            <option value="854328">HÜRRİYET (Sokak)</option>
+                            <option value="676003">İBRAHİM ORHAN (Cadde)</option>
+                            <option value="646835">İLKAY (Sokak)</option>
+                            <option value="679212">KARAŞLIK OKUL (Sokak)</option>
+                            <option value="330546">KAYA (Sokak)</option>
+                            <option value="658128">KERVAN (Sokak)</option>
+                            <option value="175315">KIVILCIM (Sokak)</option>
+                            <option value="652330">KONAK (Sokak)</option>
+                            <option value="962190">KORULUK (Cadde)</option>
+                            <option value="651814">KUZEY (Sokak)</option>
+                            <option value="679874">KÜLTÜR (Cadde)</option>
+                            <option value="679509">MAKSEM (Cadde)</option>
+                            <option value="652690">MAVİ (Cadde)</option>
+                            <option value="840914">MEHMET AKİF ERSOY (Cadde)</option>
+                            <option value="840919">MEHTER (Cadde)</option>
+                            <option value="841195">MİMOZA (Sokak)</option>
+                            <option value="321912">RAMPA (Sokak)</option>
+                            <option value="665794">ROTA (Cadde)</option>
+                            <option value="1376001">SAVANA (Sokak)</option>
+                            <option value="676769">SILA (Sokak)</option>
+                            <option value="841479">SİMGE (Sokak)</option>
+                            <option value="654601">SİS (Sokak)</option>
+                            <option value="646254">ŞAİR (Sokak)</option>
+                            <option value="1303035">ŞEHİT JANDARMA ASTEĞMEN ZEKİ BURAK OKAY (Sokak)</option>
+                            <option value="101215">ŞELALE (Sokak)</option>
+                            <option value="926768">YANKI (Sokak)</option>
+                            <option value="388512">YAŞAM (Sokak)</option>
+                            <option value="677897">YEDİSELVİLER (Sokak)</option>
+                        </select><span
+                            class="select2 select2-container select2-container--default select2-container--below"
+                            dir="ltr" style="width: 100%;"><span class="selection"><span
+                                    class="select2-selection select2-selection--single" role="combobox"
+                                    aria-haspopup="true" aria-expanded="false" tabindex="0"
+                                    aria-labelledby="select2-yolListesi-container"><span
+                                        class="select2-selection__rendered" id="select2-yolListesi-container"
+                                        title="SİMGE (Sokak)"><span class="select2-selection__clear">×</span>SİMGE
+                                        (Sokak)</span><span class="select2-selection__arrow" role="presentation"><b
+                                            role="presentation"></b></span></span></span><span class="dropdown-wrapper"
+                                aria-hidden="true"></span></span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 margin-top-5">
+                        <select id="binaListesi" name="binaKayitNo" tabindex="-1" class="select2-hidden-accessible"
+                            aria-hidden="true">
+                            <option></option>
+                            <option value="353718273">2 - Mesken - Bina Ana Giriş - İskan</option>
+                            <option value="347001323">3 - Mesken - Bina Ana Giriş - Bilinmeyen</option>
+                            <option value="354271504">4 - Mesken - Bina Ana Giriş - Bilinmeyen</option>
+                            <option value="346058191">5 - Mesken - Bina Ana Giriş - Bilinmeyen</option>
+                            <option value="345104897">6 - Mesken - Bina Ana Giriş - Bilinmeyen</option>
+                            <option value="347414724">7 - Mesken - Bina Ana Giriş - Bilinmeyen</option>
+                            <option value="357165273">8 - Mesken - Bina Ana Giriş - Bilinmeyen</option>
+                            <option value="346113863">9 - Mesken - Bina Ana Giriş - Bilinmeyen</option>
+                            <option value="755728656">9/1 - Diğer - Diğer Yapı Girişi</option>
+                            <option value="348079203">10 - Mesken - Bina Ana Giriş - Bilinmeyen</option>
+                            <option value="347293920">11 - Mesken - Bina Ana Giriş - Bilinmeyen</option>
+                            <option value="346321326">12 - Mesken - Bina Ana Giriş - Bilinmeyen</option>
+                            <option value="354766891">13 - Mesken - Bina Ana Giriş - Bilinmeyen</option>
+                            <option value="353256241">14 - Mesken - Bina Ana Giriş - Bilinmeyen</option>
+                            <option value="346336563">15 - Mesken - Bina Ana Giriş - Bilinmeyen</option>
+                            <option value="343871919">17 - Mesken - Bina Ana Giriş - Bilinmeyen</option>
+                            <option value="352323158">19 - Mesken - Bina Ana Giriş - Bilinmeyen</option>
+                            <option value="352133730">21 - Mesken - Bina Ana Giriş - Bilinmeyen</option>
+                            <option value="346399405">23 - Mesken - Bina Ana Giriş - Bilinmeyen</option>
+                            <option value="353458151">25 - Mesken - Bina Ana Giriş - Bilinmeyen</option>
+                            <option value="346795974">27 - Mesken - Bina Ana Giriş - Bilinmeyen</option>
+                            <option value="348566258">29 - Mesken - Bina Ana Giriş - Bilinmeyen</option>
+                            <option value="359310760">31 - Mesken - Bina Ana Giriş - Bilinmeyen</option>
+                            <option value="359156221">33 - Arsa</option>
+                        </select><span
+                            class="select2 select2-container select2-container--default select2-container--below"
+                            dir="ltr" style="width: 100%;"><span class="selection"><span
+                                    class="select2-selection select2-selection--single" role="combobox"
+                                    aria-haspopup="true" aria-expanded="false" tabindex="0"
+                                    aria-labelledby="select2-binaListesi-container"><span
+                                        class="select2-selection__rendered" id="select2-binaListesi-container"
+                                        title="29 - Mesken - Bina Ana Giriş - Bilinmeyen"><span
+                                            class="select2-selection__clear">×</span>29 - Mesken - Bina Ana Giriş -
+                                        Bilinmeyen</span><span class="select2-selection__arrow" role="presentation"><b
+                                            role="presentation"></b></span></span></span><span class="dropdown-wrapper"
+                                aria-hidden="true"></span></span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 margin-top-5">
+                        <select id="bagimsizBolumListesi" name="bagimsizBolumKayitNo" tabindex="-1"
+                            class="select2-hidden-accessible" aria-hidden="true">
+                            <option></option>
+                            <option value="8545268">Kullanım Amacı : Mesken - Tip : Özel - Durum : Bilinmeyen</option>
+                        </select><span
+                            class="select2 select2-container select2-container--default select2-container--below"
+                            dir="ltr" style="width: 100%;"><span class="selection"><span
+                                    class="select2-selection select2-selection--single" role="combobox"
+                                    aria-haspopup="true" aria-expanded="false" tabindex="0"
+                                    aria-labelledby="select2-bagimsizBolumListesi-container"><span
+                                        class="select2-selection__rendered" id="select2-bagimsizBolumListesi-container"
+                                        title="Kullanım Amacı : Mesken - Tip : Özel - Durum : Bilinmeyen"><span
+                                            class="select2-selection__clear">×</span>Kullanım Amacı : Mesken - Tip :
+                                        Özel - Durum : Bilinmeyen</span><span class="select2-selection__arrow"
+                                        role="presentation"><b role="presentation"></b></span></span></span><span
+                                class="dropdown-wrapper" aria-hidden="true"></span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="adres-bilgisi-panel-popup-layer" style="display: none;">
+        <div class="adres-bilgisi-panel-popup-layer-content"
+            style="inset: 100% 0px 0px; color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); transition: all 0.3s ease 0s;">
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table aksHarita table-bordered table-hover ui-responsive">
+                        <thead>
+                            <tr class="table-header hidden-sm hidden-xs">
+                                <th colspan="9">Numarataj Bilgileri</th>
+                                <th colspan="7" class="bagimsizBolum">Bağımsız Bölüm Bilgileri</th>
+                            </tr>
+                            <tr class="table-sub-header">
+                                <th class="hidden-sm hidden-xs">Kimlik No</th>
+                                <th class="hidden-sm hidden-xs">Ada</th>
+                                <th class="hidden-sm hidden-xs">Parsel</th>
+                                <th class="hidden-sm hidden-xs">Pafta</th>
+                                <th class="hidden-sm hidden-xs">Posta Kod</th>
+                                <th class="hidden-sm hidden-xs">Numarataj Tipi</th>
+                                <th class="hidden-sm hidden-xs">Site Adı</th>
+                                <th class="hidden-sm hidden-xs">Apartman/Blok Adı</th>
+                                <th class="hidden-sm hidden-xs">Dış Kapı</th>
+                                <th class="bagimsizBolum hidden-sm hidden-xs">Kimlik No</th>
+                                <th class="bagimsizBolum hidden-sm hidden-xs">İç Kapı</th>
+                                <th class="bagimsizBolum hidden-sm hidden-xs">Kullanım Amacı</th>
+                                <th class="bagimsizBolum hidden-sm hidden-xs">Tip</th>
+                                <th class="bagimsizBolum hidden-sm hidden-xs">Durum</th>
+                                <th class="bagimsizBolum hidden-sm hidden-xs">Tapu No</th>
+                                <th class="bagimsizBolum visible-sm visible-xs">Açık Adres</th>
+                                <th class="bagimsizBolum"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr bagimsizbolumkimlikno="1533123566">
+                                <td class="hidden-sm hidden-xs" data-title="Numarataj Kimlik No"><label
+                                        id="binaNo">348566258</label></td>
+                                <td class="hidden-sm hidden-xs" data-title="Ada"><label id="ada">-</label></td>
+                                <td class="hidden-sm hidden-xs" data-title="Parsel"><label id="parsel">1148</label></td>
+                                <td class="hidden-sm hidden-xs" data-title="Pafta"><label id="pafta">-</label></td>
+                                <td class="hidden-sm hidden-xs" data-title="Posta Kodu"><label id="postaKodu">-</label>
+                                </td>
+                                <td class="hidden-sm hidden-xs" data-title="Numarataj Tipi"><label
+                                        id="maksBinaNumaratajTipiFormatted">Bina Ana Giriş</label></td>
+                                <td class="hidden-sm hidden-xs" data-title="Site Adı"><label id="siteAdi">BARIS
+                                        SITESI</label></td>
+                                <td class="hidden-sm hidden-xs" data-title="Apartman/Blok Adı"><label
+                                        id="blokAdi">B-9</label></td>
+                                <td class="hidden-sm hidden-xs" data-title="Dış Kapı No"><label
+                                        id="disKapiNo">29</label></td>
+                                <td class="bagimsizBolum hidden-sm hidden-xs" data-title="Kimlik No"><label
+                                        id="adresNo">1533123566</label></td>
+                                <td class="bagimsizBolum hidden-sm hidden-xs" data-title="İç Kapı No"><label
+                                        id="icKapiNo">-</label></td>
+                                <td class="bagimsizBolum hidden-sm hidden-xs" data-title="Kullanım Amacı"><label
+                                        id="yapiKullanimAmacFormatted">Mesken</label></td>
+                                <td class="bagimsizBolum hidden-sm hidden-xs" data-title="Tip"><label
+                                        id="maksBbTipFormatted">Özel</label></td>
+                                <td class="bagimsizBolum hidden-sm hidden-xs" data-title="Durum"><label
+                                        id="maksBbDurumFormatted">Bilinmeyen</label></td>
+                                <td class="bagimsizBolum hidden-sm hidden-xs" data-title="Tapu No"><label
+                                        id="tapuNo">-</label></td>
+                                <td class="bagimsizBolum visible-sm visible-xs" data-title="Açık Adres">
+                                    <div>
+                                        <label id="acikAdresAciklama"> BADEMLİ MAH. SİMGE SK. NO: 29 MUDANYA /
+                                            BURSA</label>
+                                        <br>
+                                        <div class="x-small">
+                                            Kimlik No : <label id="binaNo">348566258</label>,
+                                            Kimlik No : <label id="adresNo">1533123566</label>,
+                                            Ada : <label id="ada">-</label>,
+                                            Pafta : <label id="pafta">-</label>,
+                                            Parsel : <label id="parsel">1148</label>,
+                                            Posta Kodu : <label id="postaKodu">-</label>,
+                                            Numarataj Tipi : <label id="maksBinaNumaratajTipiFormatted">Bina Ana
+                                                Giriş</label>,
+                                            Site Adı : <label id="siteAdi">BARIS SITESI</label>,
+                                            Apartman/Blok Adı : <label id="blokAdi">B-9</label>,
+                                            Dış Kapı No : <label id="disKapiNo">29</label>,
+                                            İç Kapı No : <label id="icKapiNo">-</label>,
+                                            Kullanım Amacı : <label id="yapiKullanimAmacFormatted">Mesken</label>,
+                                            Tip : <label id="maksBbTipFormatted">Özel</label>,
+                                            Durum : <label id="maksBbDurumFormatted">Bilinmeyen</label>,
+                                            Tapu No : <label id="tapuNo">-</label>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td data-title="">
+                                    <div class="dogrulamaButonContainer"><button disabled="disabled" type="button"
+                                            class="btn btn-sm btn-primary haritaDogrulaButton">Adres Seçildi</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div
+        style="background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); box-shadow: rgba(0, 0, 0, 0.2) 2px 2px 3px; position: absolute; transition: visibility 0s linear 0.3s, opacity 0.3s linear 0s; opacity: 0; visibility: hidden; z-index: 2000000000; left: 0px; top: -10000px;">
+        <div
+            style="width: 100%; height: 100%; position: fixed; top: 0px; left: 0px; z-index: 2000000000; background-color: rgb(255, 255, 255); opacity: 0.05;">
+        </div>
+        <div class="g-recaptcha-bubble-arrow"
+            style="border: 11px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -11px; z-index: 2000000000;">
+        </div>
+        <div class="g-recaptcha-bubble-arrow"
+            style="border: 10px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -10px; z-index: 2000000000;">
+        </div>
+        <div style="z-index: 2000000000; position: relative;"><iframe
+                title="reCAPTCHA sorusunun süresi iki dakika sonra dolacak" name="c-3efj5na2xogr" frameborder="0"
+                scrolling="no"
+                sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation"
+                src="https://www.google.com/recaptcha/api2/bframe?hl=tr&amp;v=Ya-Cd6PbRI5ktAHEhm9JuKEu&amp;k=6LcrFjwUAAAAABui7fXG9wtscqRlt6Avzxfxkmdz"
+                style="width: 100%; height: 100%;"></iframe></div>
+    </div>
+</body>
