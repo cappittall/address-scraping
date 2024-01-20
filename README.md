@@ -27,7 +27,7 @@ This script is designed to automate the process of scraping address data from a 
 1. Ensure the Chrome WebDriver path is correctly set in the script or the system PATH.
 2. Run the script:
     ```
-    python address_scraper.py
+    python main.py
     ```
 3. The script will start scraping data and will automatically handle pagination and dropdowns.
 4. The scraped data will be stored in `data/scraped_data.csv`.
