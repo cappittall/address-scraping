@@ -46,5 +46,5 @@ This script is designed to automate the process of scraping address data from a 
 - The script may require modifications if the website's structure or the CAPTCHA handling changes significantly.
 
 ## Contribution
-Feel free to fork the project, make improvements, or adapt the script for other websites or purposes. Any contributions or suggestions are welcome!
+Feel free to fork the project, make improvements, or adapt the script for other websites or purposes. Any suggestions are welcome!
 
